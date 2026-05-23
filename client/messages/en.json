@@ -1,0 +1,78 @@
+{
+  "welcome": "Welcome to my website!",
+  "login": {
+    "title": "Admin Panel",
+    "username": "Username",
+    "password": "Password",
+    "button": "Login",
+    "error": "Login error"
+  },
+  "adminPanel": {
+    "beatsManagement": "Beats management",
+    "logout": "Logout",
+    "panelHeader": "Admin panel",
+    "panelLabel": "Welcome to admin panel"
+  },
+  "beats": {
+    "addBeat": "Add beat",
+    "editBeat": "Edit beat",
+    "name": "Name",
+    "fileName": "File name",
+    "duration": "Duration",
+    "size": "Size",
+    "plays": "Plays",
+    "actions": "Actions",
+    "file": "File",
+    "image": "Image",
+    "namePl": "Name (PL)",
+    "nameEn": "Name (EN)",
+    "polish": "Polish",
+    "english": "English",
+    "save": "Save",
+    "cancel": "Cancel",
+    "main": "main",
+    "yes": "yes",
+    "no": "no",
+    "beatDeleted": "The beat has been successfully deleted"
+  },
+  "player": {
+    "volume": "Volume"
+  },
+  "SEO": {
+    "title": "Music Producer | Mix & Mastering | Gdynia Area",
+    "description": "Professional music production, mixing and mastering in the Gdynia area.",
+    "keywords": "music producer,mixing,mastering,recording studio,Gdynia,music, neumy, neumyBeats"
+  },
+  "hero": {
+    "title": "Music producer"
+  },
+  "languages": {
+    "pl": "Polish",
+    "en": "English"
+  },
+  "services": {
+    "production": "Beats production",
+    "mix": "Mix and mastering",
+    "consulting": "Music consultations"
+  },
+  "library": {
+    "header": "Beat library"
+  },
+  "contact": {
+    "header": "Let's connect",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. If the problem persists, please try again later.",
+    "tryAgain": "Try again",
+    "goHome": "Go home",
+    "errorId": "Error ID"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.0.1",
+    "@fortawesome/free-solid-svg-icons": "^7.0.1",
+    "@fortawesome/react-fontawesome": "^3.0.2",
+    "@react-three/fiber": "^9.3.0",
+    "framer-motion": "^12.23.22",
+    "googleapis": "^134.0.0",
+    "i18next": "^25.3.2",
+    "jsonwebtoken": "^9.0.2",
+    "keen-slider": "^6.8.6",
+    "lottie-react": "^2.4.1",
+    "motion": "^12.23.22",
+    "next": "15.4.1",
+    "next-i18next": "^15.4.2",
+    "next-intl": "^4.3.4",
+    "next-with-less": "^3.0.1",
+    "nodemailer": "^7.0.12",
+    "react": "19.1.0",
+    "react-audio-visualizer-pro": "^0.4.1",
+    "react-dom": "19.1.0",
+    "react-i18next": "^15.6.0",
+    "react-parallax-tilt": "^1.7.316",
+    "rsuite": "^5.83.2",
+    "three": "^0.180.0",
+    "wavesurfer.js": "^7.10.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/react-i18next": "^7.8.3",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.1",
+    "less": "^4.4.0",
+    "less-loader": "^12.3.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

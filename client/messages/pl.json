@@ -1,0 +1,78 @@
+{
+  "welcome": "Witamy na mojej stronie!",
+  "login": {
+    "title": "Panel administracyjny",
+    "username": "Nazwa użytkownika",
+    "password": "Hasło",
+    "button": "Zaloguj się",
+    "error": "Błąd logowania"
+  },
+  "adminPanel": {
+    "beatsManagement": "Zarządzanie beat'ami",
+    "logout": "Wyloguj",
+    "panelHeader": "Panel administratora",
+    "panelLabel": "Witaj w panelu administratora"
+  },
+  "beats": {
+    "addBeat": "Dodaj beat",
+    "editBeat": "Edytuj beat",
+    "name": "Nazwa",
+    "fileName": "Nazwa pliku",
+    "duration": "Długość",
+    "size": "Rozmiar",
+    "plays": "Przesłuchania",
+    "actions": "Akcje",
+    "file": "Plik",
+    "image": "Grafika",
+    "namePl": "Nazwa (PL)",
+    "nameEn": "Nazwa (EN)",
+    "polish": "Polski",
+    "english": "Angielski",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "main": "główny",
+    "yes": "tak",
+    "no": "nie",
+    "beatDeleted": "Ten beat został pomyślnie usunięty"
+  },
+  "player": {
+    "volume": "Głośność"
+  },
+  "SEO": {
+    "title": "Producent muzyczny | Mix & Mastering | Trójmiasto",
+    "description": "Profesjonalna produkcja muzyczna, mix i mastering w Trójmieście.",
+    "keywords": "producent muzyczny,mix,mastering,studio nagrań,Trójmiasto,muzyka, neumy, neumyBeats"
+  },
+  "hero": {
+    "title": "Producent muzyczny"
+  },
+  "languages": {
+    "pl": "Polski",
+    "en": "Angielski"
+  },
+  "services": {
+    "production": "Produkcja bitów",
+    "mix": "Mix i mastering",
+    "consulting": "Konsultacje muzyczne"
+  },
+  "library": {
+    "header": "Bilbioteka bitów"
+  },
+  "contact": {
+    "header": "Nawiążmy kontakt",
+    "name": "Imię i nazwisko",
+    "email": "Email",
+    "message": "Wiadomość",
+    "send": "Wyślij wiadomość"
+  },
+  "footer": {
+    "rights": "Wszystkie prawa zastrzeżone"
+  },
+  "error": {
+    "title": "Coś poszło nie tak",
+    "description": "Wystąpił nieoczekiwany błąd. Jeśli problem będzie się powtarzał, spróbuj ponownie później.",
+    "tryAgain": "Spróbuj ponownie",
+    "goHome": "Strona główna",
+    "errorId": "ID błędu"
+  }
+}

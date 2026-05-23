@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'rsuite/dist/rsuite-no-reset.min.css';
+
+:root {
+  /* Primary Colors */
+  --primary-red: #D73333;
+
+  /* Fonts */
+  --hero-header-font: 'Climate Crisis';
+
+  font-size: 10px;
+}
+
+/* === BRUTALIST SCROLLBAR === */
+::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+::-webkit-scrollbar-track {
+    background: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background: black;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #191616;
+}
+
+::-webkit-scrollbar-corner {
+    background: black;
+}
+
+
+
+
