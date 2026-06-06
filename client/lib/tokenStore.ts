@@ -2,8 +2,11 @@ import crypto from 'crypto'
 import fs from 'fs'
 import path from 'path'
 
-// Simple encrypted file token store. In production, prefer a secrets manager or database.
-const DATA_DIR = path.join(process.cwd(), '.data')
+// Simple encrypted file token store. On Vercel the project filesystem is
+// read-only, so we fall back to the writable /tmp dir, and additionally support
+// a GMAIL_REFRESH_TOKEN env var (set once after authorizing locally) so the
+// contact form keeps working across cold starts.
+const DATA_DIR = process.env.VERCEL ? '/tmp/.data' : path.join(process.cwd(), '.data')
 const TOKEN_PATH = path.join(DATA_DIR, 'gmail-token.enc')
 
 const ALGO = 'aes-256-gcm'
@@ -30,7 +33,12 @@ export function saveToken(token: any) {
 }
 
 export function loadToken(): any | null {
-  if (!fs.existsSync(TOKEN_PATH)) return null
+  if (!fs.existsSync(TOKEN_PATH)) {
+    if (process.env.GMAIL_REFRESH_TOKEN) {
+      return { refresh_token: process.env.GMAIL_REFRESH_TOKEN }
+    }
+    return null
+  }
   const key = getKey()
   const payload = fs.readFileSync(TOKEN_PATH, 'utf8')
   const raw = Buffer.from(payload, 'base64')
@@ -44,7 +52,7 @@ export function loadToken(): any | null {
 }
 
 export function hasToken(): boolean {
-  return fs.existsSync(TOKEN_PATH)
+  return fs.existsSync(TOKEN_PATH) || !!process.env.GMAIL_REFRESH_TOKEN
 }
 
 export function clearToken() {

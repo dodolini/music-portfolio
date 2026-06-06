@@ -14,7 +14,7 @@ interface HeroPlayerProps {
     initialBeats: Beat[];
     isPlaying: boolean;
     setIsPlaying: (playing: boolean) => void;
-    audioRef: RefObject<HTMLAudioElement>;
+    audioRef: RefObject<HTMLAudioElement | null>;
     setIsReady: (ready: boolean) => void;
     isReady: boolean;
 }
@@ -28,7 +28,7 @@ const StickyPlayer: FC<{
     handleSeek: (e: React.MouseEvent<HTMLDivElement>) => void;
     currentTime: number;
     duration: number;
-    locale: string;
+    locale: "pl" | "en";
     apiBase: string;
     visible: boolean;
     isReady: boolean;
@@ -59,9 +59,11 @@ const StickyPlayer: FC<{
                     <div className="w-[60px] h-[60px] overflow-hidden rounded-md flex-shrink-0">
                         <Image
                             src={
-                                currentBeat.imageUrl.startsWith("http")
-                                    ? currentBeat.imageUrl
-                                    : `${apiBase}${currentBeat.imageUrl}`
+                                currentBeat.imageUrl
+                                    ? currentBeat.imageUrl.startsWith("http")
+                                        ? currentBeat.imageUrl
+                                        : `${apiBase}${currentBeat.imageUrl}`
+                                    : "/hero-img.png"
                             }
                             alt={currentBeat.name[locale] || currentBeat.name.en}
                             width={60}
@@ -137,13 +139,15 @@ const StickyPlayer: FC<{
 }
 
 const HeroPlayer: FC<HeroPlayerProps> = ({ initialBeats, isPlaying, setIsPlaying, audioRef, setIsReady, isReady }) => {
-    const apiBase = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
+    // Cloudinary returns absolute https URLs; apiBase only prefixes any legacy
+    // relative paths, which now resolve against the same origin.
+    const apiBase = "";
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [volume, setVolume] = useState(0.5);
     const { currentIndex, setCurrentIndex } = useBeatLibrary()
     const t = useTranslations("player");
-    const locale = useLocale();
+    const locale = useLocale() as "pl" | "en";
     const playerRef = useRef<HTMLDivElement>(null);
     const [mounted, setMounted] = useState(false);
 
@@ -200,7 +204,7 @@ const HeroPlayer: FC<HeroPlayerProps> = ({ initialBeats, isPlaying, setIsPlaying
         if (playedBeats.includes(beatId)) return;
 
         try {
-            await fetch(`${apiBase}/beats/${beatId}/play`, {
+            await fetch(`/api/beats/${beatId}/play`, {
                 method: "POST",
             });
 
@@ -257,9 +261,11 @@ const HeroPlayer: FC<HeroPlayerProps> = ({ initialBeats, isPlaying, setIsPlaying
                     <div className="flex-1 flex items-center justify-center w-[150px] h-[150px] overflow-hidden">
                         <Image
                             src={
-                                currentBeat.imageUrl.startsWith("http")
-                                    ? currentBeat.imageUrl
-                                    : `${apiBase}${currentBeat.imageUrl}`
+                                currentBeat.imageUrl
+                                    ? currentBeat.imageUrl.startsWith("http")
+                                        ? currentBeat.imageUrl
+                                        : `${apiBase}${currentBeat.imageUrl}`
+                                    : "/hero-img.png"
                             }
                             alt={currentBeat.name[locale] || currentBeat.name.en}
                             width={150}

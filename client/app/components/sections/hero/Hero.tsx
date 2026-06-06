@@ -22,10 +22,18 @@ const Hero: FC<HeroProps> = ({ beats, scrollYProgress }) => {
     const [isPlaying, setIsPlaying] = useState(false)
     const [isReady, setIsReady] = useState(false)
     const [fadeLoader, setFadeLoader] = useState(false)
+    const [isMobile, setIsMobile] = useState(false)
     const audioRef = useRef<HTMLAudioElement | null>(null)
 
+    useEffect(() => {
+        const check = () => setIsMobile(typeof window !== 'undefined' && window.innerWidth < 1024)
+        check()
+        window.addEventListener('resize', check)
+        return () => window.removeEventListener('resize', check)
+    }, [])
+
     const { scrollY } = useScroll()
-    // parallax movement
+    // parallax movement (disabled on mobile)
     const yImage = useTransform(scrollY, [0, 1000], [0, -170]) // image moves faster
     const yPlayer = useTransform(scrollY, [0, 500], [0, -50]) // player slower
     const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85])
@@ -50,13 +58,13 @@ const Hero: FC<HeroProps> = ({ beats, scrollYProgress }) => {
     }, [isReady])
 
     return (
-        <motion.section className="sticky top-0 w-screen h-screen bg-[var(--primary-red)] border-1 border-transparent" style={{scale, rotate}}>
+        <motion.section className={`${isMobile ? "relative h-[100vh]" : "sticky top-0 h-screen"} w-screen bg-[var(--primary-red)] border-1 border-transparent overflow-hidden`} style={{ scale: isMobile ? 1 : scale, rotate: isMobile ? 0 : rotate }}>
             {/* --- MAIN CONTENT --- */}
             <div>
                 {/* Image with parallax */}
                 <motion.div
-                    className="absolute top-30 right-30 z-[50]"
-                    style={{ y: yImage }}
+                    className="absolute top-30 right-30 z-[50] hidden lg:block"
+                    style={{ y: isMobile ? 0 : yImage }}
                 >
                     <Image
                         src="/hero-img.png"
@@ -68,7 +76,7 @@ const Hero: FC<HeroProps> = ({ beats, scrollYProgress }) => {
                 </motion.div>
 
                 {/* Headers */}
-                <div className="ml-14 mt-4 relative z-[30]">
+                <div className="ml-4 lg:ml-14 mt-4 relative z-[30]">
                     {headers.map((header, idx) => (
                         <h1
                             key={idx}
@@ -81,8 +89,8 @@ const Hero: FC<HeroProps> = ({ beats, scrollYProgress }) => {
                             `}
                             style={{
                                 opacity: header.opacity,
-                                fontSize: "14rem",
-                                lineHeight: "10rem",
+                                fontSize: isMobile ? "3rem" : "14rem",
+                                lineHeight: isMobile ? "3.25rem" : "10rem",
                                 WebkitTextStrokeWidth: "2px",
                                 WebkitTextStrokeColor: "white",
                             }}
@@ -93,7 +101,7 @@ const Hero: FC<HeroProps> = ({ beats, scrollYProgress }) => {
                 </div>
 
                 {/* Player with parallax */}
-                <motion.div style={{ y: yPlayer }}>
+                <motion.div style={{ y: isMobile ? 0 : yPlayer }}>
                     <HeroPlayer
                         initialBeats={beats}
                         isPlaying={isPlaying}

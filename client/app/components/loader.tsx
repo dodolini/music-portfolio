@@ -25,7 +25,6 @@ const MusicLoader: React.FC<Props> = ({ size = 120, speed = 1 }) => {
                 loop
                 autoplay
                 style={{ width: "100%", height: "100%" }}
-                speed={speed}
             />
 
         </div>

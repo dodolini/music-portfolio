@@ -18,7 +18,7 @@ const MainSection: React.FC<MainSectionProps> = ({initialBeats}) => {
     })
     
     return (
-        <main className={'relative h-[200vh]'} ref={containerRef}>
+        <main className={'relative h-auto lg:h-[200vh]'} ref={containerRef}>
             <Hero
                 beats={initialBeats}
                 scrollYProgress={scrollYProgress}

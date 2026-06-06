@@ -33,7 +33,8 @@
     "main": "main",
     "yes": "yes",
     "no": "no",
-    "beatDeleted": "The beat has been successfully deleted"
+    "beatDeleted": "The beat has been successfully deleted",
+    "saveError": "Failed to save the beat. Please try again."
   },
   "player": {
     "volume": "Volume"

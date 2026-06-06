@@ -7,7 +7,7 @@ import { getTranslations } from 'next-intl/server';
 
 // tłumaczone meta
 export async function generateMetadata(
-  { params }: { params: { locale: string } }
+  { params }: { params: Promise<{ locale: string }> }
 ): Promise<Metadata> {
   const parameters = await params;
   const locale =  parameters.locale;
@@ -43,7 +43,7 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
   const parameters = await params;
   const locale =  parameters.locale;

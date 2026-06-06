@@ -7,7 +7,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import {initAudio} from "../context/audioContext";
 
 interface AudioVizPlayerProps {
-    audioRef: React.RefObject<HTMLAudioElement>;
+    audioRef: React.RefObject<HTMLAudioElement | null>;
     isPlaying: boolean;
 }
 
@@ -57,7 +57,7 @@ export default function AudioVizPlayer({
                                            isPlaying,
                                        }: AudioVizPlayerProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const animationRef = useRef<number>();
+    const animationRef = useRef<number | null>(null);
     const audioCtxRef = useRef<AudioContext | null>(null);
     const analyserRef = useRef<AnalyserNode | null>(null);
     const sourceRef = useRef<MediaElementAudioSourceNode | null>(null);

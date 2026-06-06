@@ -6,6 +6,13 @@ import Tilt from "react-parallax-tilt"
 import { Beat } from "../../../[locale]/panel/beats/page"
 import { Syne } from "next/font/google"
 import { IconButton } from "rsuite"
+// rsuite's IconButton props union is too large for TS to represent here.
+const IconBtn = IconButton as React.FC<{
+    icon: React.ReactElement
+    onClick?: () => void
+    className?: string
+    circle?: boolean
+}>
 import ChevronLeftIcon from "@rsuite/icons/legacy/ChevronLeft"
 import ChevronRightIcon from "@rsuite/icons/legacy/ChevronRight"
 import Image from "next/image"
@@ -19,8 +26,9 @@ interface BitLibraryProps {
 const syne = Syne({ subsets: ["latin"], weight: "800" })
 
 const BitLibrary: FC<BitLibraryProps> = ({ initialBeats }) => {
-    const apiBase =
-        process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"
+    // Cloudinary returns absolute https URLs; apiBase only prefixes any legacy
+    // relative paths, which now resolve against the same origin.
+    const apiBase = ""
 
     const containerRef = useRef<HTMLDivElement>(null)
 
@@ -98,13 +106,13 @@ const BitLibrary: FC<BitLibraryProps> = ({ initialBeats }) => {
                     className="absolute top-[130vh] left-0 w-full flex justify-center items-center"
                 >
                     <div className="relative w-[80%] flex flex-col items-center">
-                        <IconButton
+                        <IconBtn
                             icon={<ChevronLeftIcon />}
                             onClick={prevSlide}
                             className="!absolute left-[-60px] top-1/2 -translate-y-1/2 !bg-white/10 hover:!bg-white/20 !text-white !p-3 !rounded-full z-30"
                             circle
                         />
-                        <IconButton
+                        <IconBtn
                             icon={<ChevronRightIcon />}
                             onClick={nextSlide}
                             className="!absolute right-[-60px] top-1/2 -translate-y-1/2 !bg-white/10 hover:!bg-white/20 !text-white !p-3 !rounded-full z-30"
@@ -163,9 +171,11 @@ const BitLibrary: FC<BitLibraryProps> = ({ initialBeats }) => {
                                                 <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl flex flex-col justify-end text-center">
                                                     <Image
                                                         src={
-                                                            beat.imageUrl.startsWith("http")
-                                                                ? beat.imageUrl
-                                                                : `${apiBase}${beat.imageUrl}`
+                                                            beat.imageUrl
+                                                                ? beat.imageUrl.startsWith("http")
+                                                                    ? beat.imageUrl
+                                                                    : `${apiBase}${beat.imageUrl}`
+                                                                : "/hero-img.png"
                                                         }
                                                         alt={beat.name?.pl || "Beat"}
                                                         fill

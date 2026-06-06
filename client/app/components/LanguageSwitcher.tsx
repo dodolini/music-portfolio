@@ -11,7 +11,7 @@ const LanguageSwitcher = ({ currentLang }: { currentLang: string }) => {
     { label: 'English', value: 'en' },
   ];
 
-  const handleChange = (newLang: string) => {
+  const handleChange = (newLang: string | null) => {
     if (!newLang) return;
 
     const segments = pathname.split('/').filter(Boolean);

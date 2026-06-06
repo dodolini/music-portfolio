@@ -14,7 +14,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
   const lang = params?.locale as string;
 
   const handleLogout = async () => {
-    const response = await fetch('http://localhost:4000/api/logout', {
+    const response = await fetch('/api/logout', {
       method: 'POST',
       credentials: "include",
       headers: { 'Content-Type': 'application/json' }

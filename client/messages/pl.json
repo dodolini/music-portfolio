@@ -33,7 +33,8 @@
     "main": "główny",
     "yes": "tak",
     "no": "nie",
-    "beatDeleted": "Ten beat został pomyślnie usunięty"
+    "beatDeleted": "Ten beat został pomyślnie usunięty",
+    "saveError": "Nie udało się zapisać beatu. Spróbuj ponownie."
   },
   "player": {
     "volume": "Głośność"
