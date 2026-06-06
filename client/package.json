@@ -23,7 +23,7 @@
     "lottie-react": "^2.4.1",
     "mongoose": "^9.6.3",
     "motion": "^12.23.22",
-    "next": "15.4.1",
+    "next": "15.4.10",
     "next-i18next": "^15.4.2",
     "next-intl": "^4.3.4",
     "next-with-less": "^3.0.1",
